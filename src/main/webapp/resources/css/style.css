@@ -1,0 +1,50 @@
+@charset "UTF-8";
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+.wrapper{
+	display: grid;
+	width: 100%;
+	height: 100%;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 20% 60% 20%;
+}
+.container{
+	display: grid;
+	width: 100%;
+	height: 100%;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 10% 80% 10%;
+}
+.container div{border: 2px dotted pink}
+/* .wrapper div{border : 1px dotted black} */
+#soccer_intro{
+	width: 100%;
+	height: 100px;
+}
+#login_tab{
+	display: grid;
+	width: 100%;
+	height: 80%;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 25% 25% 25% 25%;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+#inner{
+	display: grid;
+	width: 100%;
+	height: 80%;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 9% 9% 9% 9% 9% 9% 9% 9% 9% 9% 9%;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+#login_form{width: 100%; height: 100%}
+#login_tab div{border : 1px solid black;}
+
+#login_btn{width:100%; height: 100%}
+.input_text{width: 70%;height: 70px;margin-top: 70px;}
+#join_a{width:100px;margin: 0 auto}
