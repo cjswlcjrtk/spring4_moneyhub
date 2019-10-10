@@ -15,13 +15,10 @@ public class HrServiceImpl implements HrService{
 	
 	public HrBean login(HrBean param) {
 		return null;
-	}
-	
-	
+	} 	
 
 	public List<String> viewMypage() {
 		return null;
 	}
-	
 
 }
