@@ -2,10 +2,13 @@ package com.moneyhub.web.services;
 
 import java.util.List;
 
-import com.moneyhub.web.domains.HrBean;
+import com.moneyhub.web.domains.HrDTO;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public interface HrService {
-	public void join(HrBean param);
-	public HrBean login(HrBean param);
+	public void join(HrDTO param);
+	public HrDTO login(HrDTO param);
 	public List<String> viewMypage();
 }

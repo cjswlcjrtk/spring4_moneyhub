@@ -1,4 +1,4 @@
-package com.moneyhub.web;
+package com.moneyhub.web.controllers;
 
 import java.text.DateFormat;
 import java.util.Date;
