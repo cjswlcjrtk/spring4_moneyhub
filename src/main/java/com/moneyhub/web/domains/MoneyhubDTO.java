@@ -5,7 +5,7 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 @Data @Component
-public class HrDTO implements Serializable{
+public class MoneyhubDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String empno,
 	ename,
