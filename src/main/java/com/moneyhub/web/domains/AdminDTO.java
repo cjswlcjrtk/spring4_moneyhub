@@ -5,16 +5,10 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 @Data @Component
-public class MoneyhubDTO implements Serializable{
+public class AdminDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private String empno,
-	ename,
-	job,
-	mgr,
-	hiredate,
-	sal,
-	comm,
-	deptno,
-	dname,
-	loc;
+	private String astate,
+	pos,
+	aid,
+	pwd;
 }
