@@ -29,8 +29,6 @@ public class AdminController {
 			@RequestParam("pwd") String pwd) {
 		
 		
-		
-		
 		return "index";
 	}
 	
