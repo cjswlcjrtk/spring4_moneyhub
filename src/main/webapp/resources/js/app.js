@@ -1,67 +1,39 @@
-var app = (()=>{
-	return {
-		init : (ctx)=>{
-			HrService.login(ctx);
-			HrService.join(ctx);
-			HrService.moveJoin(ctx);
-		
-		}
-	};
+
+"use strict";
+var app = app || {};
+app = (()=>{	
+	const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';	
+	let _, js, authjs;
+	let run = x =>
+		//세션 값 가져오기
+		//외부파일 호출,라우어테 있는걸 가져올 수 있다,x는 webapp까지다.
+		$.getScript(x + '/resources/js/cmm/router.js', ()=>{		
+			$.extend(new Session(x));
+			onCreate();
+		})
+	let init =() => {
+		_ = $.ctx();//세션 없을 경우
+		js = $.js();
+		authjs = js + '/cmm/auth.js';
+	}
+	
+	let onCreate =()=>{
+		init();
+		$.when(
+			$.getScript(authjs)
+		)
+		.done(()=>{
+			auth.onCreate()
+		})
+		.fail(()=>{
+			alert(WHEN_ERR)	
+		})//choose when과 같은 기능
+	}
+	
+	
+	return {run:run}
 })();
 
-var hr = (()=>{
-	var empno, _ename, _deptno, _dname,	_loc, _job,
-	_mgr, _hiredate, _sal, _comm;
-	var setEmpno = (empno)=>{this.empno = empno;}
-	var setEname = (ename)=>{this.ename = ename;}
-	var getEmpno = ()=>{return this._empno;}
-	var getEname = ()=>{return this._ename;}
-	return {
-		setEmpno : setEmpno,
-		setEname : setEname,
-		getEmpno : getEmpno,
-		getEname : getEname
-	};
-})();
-
-var HrService = (()=>{
-	return {
-		login: (ctx)=>{
-			$('#login_btn').click(()=>{
-				if($('#username').val()==='' ||
-						$('#ename').val()==='' ||
-						$('#dname').val()===''){
-					alert('필수값이 없습니다.')
-				}else{
-					alert('입력한 아이디 값: '+$('#username').val());
-					$('#login_form').attr('action', ctx+'/hr.do');
-					$('#login_form').attr('method','POST');
-					$('#login_form').submit();
-				}
-			});
-		},
-		join: (ctx)=>{
-			$('#member_btn').click(()=>{
-				if($('#join_id').val()==='' ||
-						$('#join_pw').val()===''){
-					alert('필수값이 없습니다.')
-				}else{
-					alert('입력한 아이디 값: '+$('#join_empno').val());
-					$('#join_form').attr('action', ctx+'/hr.do');
-					$('#join_form').attr('method','POST');
-					$('#join_form').submit();
-				}
-			});
-		},
-		moveJoin: (ctx)=>{
-			$('#join_btn').click(()=>{
-				alert('회원가입 이동');
-				location.assign(ctx+'/hr.do?action=move&page=join');
-			});
-			$('#back').click(()=>{
-				location.assign(ctx+'/facade.do?action=move&page=login');
-			});
-		}
-	};
-})();
-
+//app(=>{})() 만들떄 커스터마이징
+//$.getScript ==>내장된거 꺼내씀
+//()=>{	$.extend(new Session(x));==>콜백함수==>호출되면 그때 실행

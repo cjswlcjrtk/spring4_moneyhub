@@ -17,19 +17,19 @@ public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	@Autowired AdminServiceImpl adminService;
 	
+	
 	@GetMapping("/count")
 	public String count(Model model) {
+		System.out.println("++++++++++++++");
 		int count = adminService.countAdmin();
-		model.addAttribute("count", count);
-		return "index";
-	}
+		model.addAttribute("count", count);		
+		return "count";
+	}               
 	
 	@GetMapping("/info")
 	public String findAdminById(@RequestParam("aid") String aid,
-			@RequestParam("pwd") String pwd) {
-		
-		
-		return "index";
+			@RequestParam("pwd") String pwd) {		
+		return "info";
 	}
 	
 	
